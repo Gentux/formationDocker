@@ -11,8 +11,8 @@ Pour cela on doit modifier notre Dockerfile:
 docker build \
   --build-arg http_proxy=$http_proxy \
   --build-arg no_proxy=$no_proxy \
-  --tag gentux/first-container .
-docker run --detach --name mon-api gentux/first-container
+  --tag atelier/first-container .
+docker run --detach --name mon-api atelier/first-container
 ```
 
 Ensuite, vous pouvez voir votre container via `docker ps` ou consulter les logs via
@@ -37,7 +37,7 @@ docker rm mon-api
 On va maintenant exporter le port réseau pour accéder à notre API
 
 ```
-docker run --detach --publish 5000:5000 --name mon-api gentux/first-container
+docker run --detach --publish 5000:5000 --name mon-api atelier/first-container
 ```
 
 ```

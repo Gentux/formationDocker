@@ -9,9 +9,9 @@ docker rm mon-api
 docker build \
   --build-arg http_proxy=$http_proxy \
   --build-arg no_proxy=$no_proxy \
-  --tag gentux/first-container .
+  --tag atelier/first-container .
 
-docker run -d -p 5000:5000 -v $PWD:/src --name mon-api gentux/first-container
+docker run -d -p 5000:5000 -v $PWD:/src --name mon-api atelier/first-container
 docker logs -f mon-api
 ```
 
