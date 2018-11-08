@@ -1,0 +1,22 @@
+[Unit]
+Description=Python backend in docker Service
+After=syslog.target docker.service
+
+[Service]
+TimeoutStartSec=0
+# =- means dont check for error
+ExecStartPre=-/usr/bin/docker kill mon-api
+ExecStartPre=-/usr/bin/docker rm mon-api
+
+ExecStart=/usr/bin/docker run \
+          --name mon-api \
+          --publish 5000:5000 \
+          --volume /home/stagiaire/formationDocker/atelier-6/:/src \
+          atelier/first-container:latest
+
+ExecStop=/usr/bin/docker stop mon-api
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target
