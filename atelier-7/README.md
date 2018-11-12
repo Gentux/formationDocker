@@ -13,7 +13,7 @@ docker ps
 docker inspect mon-api
 ```
 
-Pour aller plus loin, nous avons des outils tel que `dive` pour explorer des images de container
+Pour aller plus loin, nous avons des outils tels que `dive` pour explorer des images de container
 
 ```
 docker run --rm -it \

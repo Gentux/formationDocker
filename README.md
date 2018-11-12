@@ -45,7 +45,7 @@ Mettre une API Python dans un container
 
 ## Atelier #5
 
-Créer et utiliser les volumes dans mes container
+Créer et utiliser les volumes dans mes containers
 
 ## Atelier #6
 
