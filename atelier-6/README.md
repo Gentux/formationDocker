@@ -1,19 +1,53 @@
-# Atelier 6: Lancer un container avec SystemD
+## Atelier 6 : Aspect process du container
 
-On va d'abord écrire le fichier qui décrit notre service pour systemd.
+La bonne pratique pour les container, c'est de faire 1 process égal 1
+container.
 
-On le place ensuite dans `/etc/systemd/system/backend.service`
+Et dans cette optique, quand une équipe de dev me demande 8Go de RAM pour son
+projet, moi j'exige de pouvoir faire tourner 8 process de 1Go de RAM chacun
 
-Ensuite on le démarre en l'activant afin qu'il démarre tout avec la machine:
+On peut utiliser les conteneur pour vérifier ça
+
+## Limiter la mémoire ou le CPU
+
+Malheureusement, pour faire cette partie, il faudra un kernel `real-time` qui
+n'est pas installé par défaut.
+
+On nettoie, on rebuild et on relance le container:
+```
+docker stop mon-api
+docker kill mon-api
+docker rm mon-api
+
+docker run -d -p 5000:5000 -v $PWD:/src --name mon-api --memory=500m atelier/first-container
+docker inspect mon-api
+```
+
+## Les process dans un container ou en dehors
+
+Essayons de lister les processus dans le container
 
 ```
-sudo systemctl daemon-reload
-sudo systemctl enable backend.service
-sudo systemctl start backend.service
+sudo ps aux | grep python
+docker exec -it mon-api ps -aux
 ```
 
-Pour vérifier, nous pouvons observer les logs avec
+Pas besoin de grep dans le container, le container ne « voit » que ce qu'il y a
+dans le container
+
+On peut aussi observer que les PID ne sont pas les mêmes
+
+Et on peut aussi voir que l'utilisateur `root` dans le container est aussi
+l'utilisateur `root` sur la machine. Ici on a un problème de sécurité.
 
 ```
-sudo journalctl -fu backend.service
+docker stop mon-api
+docker rm mon-api
+docker build \
+  --build-arg http_proxy=$http_proxy \
+  --build-arg no_proxy=$no_proxy \
+  --tag atelier/first-container .
+
+docker run -d -p 5000:5000 -v $PWD:/src --name mon-api atelier/first-container
+sudo ps aux | grep flask
 ```

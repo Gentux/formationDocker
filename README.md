@@ -27,30 +27,50 @@ systemctl daemon-reload && systemctl restart docker
 exit
 ```
 
-## Atelier #1
+## Programme
+
+Les ateliers sont numéroté pour être suivi dans l'ordre.
+Chaque atlier considère les notions des ateliers précedent comme acquise
+
+Les atelier de 1 à 5 correspondent au cursus « Découverte »
+Les atelier avancé sont les ateliers suivants.
+
+2 atelier annexe parlent de systemd car c'est notre méthode de déploiement sur
+les tenants de production aujourd'hui
+
+## Cursus découverte
+
+### Atelier #1
 
 Prise en main de *docker* et téléchargement d'un container tout prêt
 
-## Atelier #2
+### Atelier #2
 
 Ecrire un fichier Dockerfile puis construire son propre container
 
-## Atelier #3
+### Atelier #3
 
 Utilisation d'un container
 
-## Atelier #4
+### Atelier #4
 
 Mettre une API Python dans un container
 
-## Atelier #5
+### Atelier #5
 
 Créer et utiliser les volumes dans mes containers
 
-## Atelier #6
+## Cursus avancé
 
-Utiliser des container dans des services SystemD
+### Atelier #6
 
-## Atelier #7
+Qu'est-ce qu'un cgroup ? Utilisation des limit et capabilities
+Les users system vs les users container
 
-Debug et résolutions des problèmes
+### Atelier #7
+
+Isolation réseau
+
+### Atelier #8
+
+Persistence des données
