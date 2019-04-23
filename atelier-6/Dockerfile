@@ -10,10 +10,11 @@ RUN mkdir /src
 VOLUME /src
 WORKDIR /src
 
-RUN addgroup -g 2200 appuser && \
-    adduser -D -u 2200 -G appuser appuser
+RUN groupadd -g 2200 appuser && \
+    useradd -r -u 2200 -g appuser appuser
+
 USER appuser
 
-ENV FLASK_APP=/src/server.py
+ENV FLASK_APP=server.py
 ENV FLASK_DEBUG=1
 CMD flask run --host=0.0.0.0

@@ -40,6 +40,8 @@ On peut aussi observer que les PID ne sont pas les mêmes
 Et on peut aussi voir que l'utilisateur `root` dans le container est aussi
 l'utilisateur `root` sur la machine. Ici on a un problème de sécurité.
 
+On introduit donc la notion de `USER` dans le fichier Dockerfile
+
 ```
 docker stop mon-api
 docker rm mon-api
@@ -50,4 +52,5 @@ docker build \
 
 docker run -d -p 5000:5000 -v $PWD:/src --name mon-api atelier/first-container
 sudo ps aux | grep flask
+docker exec -it mon-api ps -aux
 ```
