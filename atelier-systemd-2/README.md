@@ -1,4 +1,4 @@
-# Atelier 7: Debug et résolutions de problèmes
+# Atelier SystemD 2 : Debug et résolutions de problèmes
 
 Tout d'abord, les logs.
 

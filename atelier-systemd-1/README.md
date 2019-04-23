@@ -1,4 +1,4 @@
-# Atelier 6: Lancer un container avec SystemD
+# Atelier SystemD 1: Lancer un container avec SystemD
 
 On va d'abord écrire le fichier qui décrit notre service pour systemd.
 

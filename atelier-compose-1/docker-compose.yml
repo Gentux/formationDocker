@@ -1,0 +1,12 @@
+version: '2'
+
+services:
+  mon-api:
+    image: atelier/first-container
+    volumes:
+      - /home/stagiaire/formationDocker/atelier-compose-1:/src
+    ports:
+     - "5000:5000"
+
+  redis:
+    image: "redis:alpine"
