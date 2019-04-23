@@ -8,8 +8,8 @@ Ensuite on le démarre en l'activant afin qu'il démarre tout avec la machine:
 
 ```
 sudo systemctl daemon-reload
-sudo systemctl enable backen.service
-sudo systemctl start backen.service
+sudo systemctl enable backend.service
+sudo systemctl start backend.service
 ```
 
 Pour vérifier, nous pouvons observer les logs avec 
