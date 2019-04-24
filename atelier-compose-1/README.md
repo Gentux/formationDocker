@@ -16,7 +16,7 @@ On peut aussi spécifier explicitement le fichier a utiliser et utiliser
 l'option `daemon` pour faire tourner tout ça en arrière plan
 
 ```
-docker-compose -f docker-compose.yml -d up
+docker-compose -f docker-compose.yml up -d
 ```
 
 Et ensuite vérifier le résultat:

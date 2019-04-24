@@ -1,0 +1,26 @@
+version: '2'
+
+volumes:
+  data-volume:
+
+services:
+  mon-api:
+    image: atelier/first-container
+    volumes:
+      - /home/stagiaire/formationDocker/atelier-compose-1:/src
+      - data-volume:/src/partage:rw
+    ports:
+     - "5000:5000"
+    networks:
+      - mon-api-compose-network
+
+  redis:
+    image: "redis:alpine"
+    volumes:
+      - data-volume:/opt:ro
+    networks:
+      - mon-api-compose-network
+
+networks:
+  mon-api-compose-network:
+    driver: bridge

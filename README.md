@@ -2,30 +2,7 @@
 
 ## Prérequis
 
-Docker doit être installé sur votre poste.
-
-L'utilisateur courant doit appartenir au group `docker` pour éviter d'avoir à exécuter toutes les commandes en `sudo`.
-
-```sh
-sudo usermod -aG docker $USER
-```
-
-Un proxy http doit être configuré pour Docker.
-
-```sh
-sudo -s
-
-mkdir /etc/systemd/system/docker.service.d
-
-echo "[Service]" > /etc/systemd/system/docker.service.d/http-proxy.conf
-echo "Environment=\"HTTP_PROXY=http://cg_pssmaj:********@orion.dsic.minint.fr:3128\"" >> /etc/systemd/system/docker.service.d/http-proxy.conf
-echo "Environment=\"HTTPS_PROXY=http://cg_pssmaj:********@orion.dsic.minint.fr:3128\"" >> /etc/systemd/system/docker.service.d/http-proxy.conf
-echo "Environment=\"NO_PROXY=minint.fr,localhost,127.0.0.1\"" >> /etc/systemd/system/docker.service.d/http-proxy.conf
-
-systemctl daemon-reload && systemctl restart docker
-
-exit
-```
+Voir le fichier `INSTALL.md`
 
 ## Programme
 
@@ -33,10 +10,10 @@ Les ateliers sont numéroté pour être suivi dans l'ordre.
 Chaque atlier considère les notions des ateliers précedent comme acquise
 
 Les atelier de 1 à 5 correspondent au cursus « Découverte »
-Les atelier avancé sont les ateliers suivants.
+Les atelier avancés sont les ateliers suivants.
 
-2 atelier annexe parlent de systemd car c'est notre méthode de déploiement sur
-les tenants de production aujourd'hui
+En parallèle, nous avons 2 ateliers sur docker avec SystemD ainsi que 2
+ateliers sur docker-compose.
 
 ## Cursus découverte
 
@@ -69,8 +46,9 @@ Les users system vs les users container
 
 ### Atelier #7
 
-Isolation réseau
+Isolation réseau. Création de nouveaux réseau et connexion des containers aux
+travers des réseaux
 
 ### Atelier #8
 
-Persistence des données
+Persistence des données et fonctionnement du point de montage
